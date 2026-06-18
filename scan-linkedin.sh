@@ -89,7 +89,7 @@ Then APPEND a section per person to the file "$OUTFILE" using the Write tool
 (read it first if it already exists so you append rather than overwrite). Format:
 
   ## <Name> — <profile url>
-  _scanned $STAMP_
+  _scanned ${STAMP}_
 
   ### <relative date> — <one-line summary>
   <full verbatim post text>
