@@ -1,0 +1,8 @@
+# One LinkedIn profile URL per line. Blank lines and # comments are ignored.
+# The script normalises each to its /recent-activity/all/ page.
+
+# --- LETSUR founders (example set) ---
+https://www.linkedin.com/in/ghsim/                       # Shim Kyu-hyun (CEO)
+https://www.linkedin.com/in/kangyeol-kim-251857138/      # Kim Kangyeol
+https://www.linkedin.com/in/taehee-kim-202053131/        # Kim Taehee
+https://www.linkedin.com/in/wcho92/                      # Cho

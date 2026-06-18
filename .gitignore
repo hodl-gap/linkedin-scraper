@@ -1,0 +1,4 @@
+# Scraped output and run logs — local only, not committed
+output/*.md
+output/*.log
+!output/.gitkeep
