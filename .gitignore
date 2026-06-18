@@ -1,4 +1,4 @@
-# Scraped output and run logs — local only, not committed
-output/*.md
-output/*.log
-!output/.gitkeep
+# Scraped data and human deliverables — local only, not committed
+output/
+store/
+digests/
