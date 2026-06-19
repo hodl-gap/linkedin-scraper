@@ -115,12 +115,18 @@ Only for SIG posts. Caps: max $MAXL likes, max $MAXF follows.
 - Log each action to "$ACTFILE": {"action":"like"|"follow","post_id":"...","target":"<profile/name>","author":"...","dry_run":$( [[ $DRYRUN -eq 1 ]] && echo true || echo false ),"ts":"$STAMP"}
 
 == DISCOVER (bounded: add at most $MAXNEW new people this run) ==
-For a SIG post whose author's /in/ id is NOT among already-tracked ids: judge from
-their headline/role whether they are a GENUINE AI person/operator (founder/researcher/
-builder/exec in AI) — NOT a generic influencer or non-AI account. Only if YES, append
-to "$DISCFILE":
-  {"platform":"linkedin","id":"<their /in/ id>","name":"<name>","kind":"person","role_org":"<their headline/role>"}
-Stop adding once $MAXNEW recorded (note it). One record per new id.
+A candidate = the author of a SIG post whose /in/ id is NOT among already-tracked ids.
+Process newest-first; STOP once $MAXNEW are added (don't evaluate many more — bound cost).
+For each candidate:
+  1. Their in-feed HEADLINE is usually enough — if it clearly shows an AI person/operator
+     (founder / researcher / builder / exec in AI), decide from it. If AMBIGUOUS, open
+     their profile (https://www.linkedin.com/in/<id>/) and read their About + recent
+     activity. (Profile visits are READ-ONLY — do not react/follow/connect there.)
+  2. DECIDE: a GENUINE AI person/operator — NOT a generic influencer or non-AI account?
+  3. If YES, append to "$DISCFILE":
+     {"platform":"linkedin","id":"<their /in/ id>","name":"<name>","kind":"person","role_org":"<their headline/role>"}
+One record per new id. A SIG author judged NOT an AI-person is reported but not added
+(and not followed).
 
 == PERSIST + REPORT ==
 A) Write ALL captured posts to "$RAWFILE" as JSONL (keys: id, platform "linkedin",
