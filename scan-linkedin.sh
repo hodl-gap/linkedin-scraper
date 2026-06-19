@@ -96,6 +96,11 @@ You are an unattended LinkedIn intelligence agent using the chrome-devtools MCP
 tools (browser already logged in). Goal: surface what AI leaders are doing/thinking.
 Work human-paced. Stages: CAPTURE -> JUDGE -> ENGAGE (inline) -> PERSIST + REPORT.
 
+CAPS ARE CEILINGS, NOT TARGETS: stop as soon as you are caught up (you reach
+already-seen content) or run out of genuinely new material — whichever comes
+before the cap. Never scroll/dig/reach to fill a cap; an empty or near-empty run
+is correct when little is new (e.g. a profile with no new posts: capture nothing, move on).
+
 Read first (Read tool):
 - Rubric: $RUBRIC  (apply exactly, incl. edge-case tie-breakers)
 - People/entity context: $PEOPLE_DB  (match each profile by linkedin id for role_org + notes)

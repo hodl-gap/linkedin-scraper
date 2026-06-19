@@ -76,6 +76,12 @@ Goal: surface what AI leaders are doing/thinking AND discover new AI people the 
 shows you. Stages: CAPTURE -> JUDGE -> ENGAGE -> DISCOVER -> REPORT. Work human-paced
 and BOUNDED — do not endlessly scroll.
 
+CAPS ARE CEILINGS, NOT TARGETS: stop as soon as you are caught up (you hit a run
+of already-seen posts) or run out of genuinely new material — whichever comes
+before the cap. Never scroll past already-seen content to reach the cap; an empty
+or near-empty run is correct when little is new. The new-people cap is likewise a
+ceiling — only add people who genuinely qualify, never to "fill" it.
+
 Read first (Read tool):
 - Rubric: $RUBRIC   (apply exactly)
 - People/entity context: $PEOPLE_DB  (entity-context AND already-tracked linkedin ids)
