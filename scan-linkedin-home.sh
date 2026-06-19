@@ -87,13 +87,21 @@ Read first (Read tool):
 - People/entity context: $PEOPLE_DB  (entity-context AND already-tracked linkedin ids)
 - Already-seen post ids (DO NOT re-report): $SEEN
 
-== CAPTURE (bounded) ==
+== CAPTURE (bounded, STRICTLY READ-ONLY) ==
 Navigate https://www.linkedin.com/feed/ (timeout 60000; ignore a false timeout).
-Read newest downward and STOP after ~$NPOSTS posts — do NOT keep scrolling past that.
-Expand "see more". Skip promoted/ads and "people you may know". For each post
-capture: id (activity urn), author name + their /in/ id + one-line headline if
-visible, date, type, verbatim text, reaction/comment counts, and (if a reshare) the
-original author. Skip already-seen ids.
+Extract posts ENTIRELY from take_snapshot (+ read-only evaluate_script). To load
+more, scroll via evaluate_script (window.scrollTo(0, document.body.scrollHeight))
+then re-snapshot. STOP at ~$NPOSTS posts or when caught up (ceiling rule above).
+Skip promoted/ads and "people you may know".
+NEVER click Like / Comment / Repost / Follow / Connect or any control during capture
+— this stage is read-only. (The ENGAGE stage is the ONLY place anything is clicked,
+and only when enabled.) Do NOT click a Comment button to surface an id.
+Per post, from the snapshot: id = the activity urn taken from the post's permalink
+href (the "urn:li:activity:NNNN" inside its link); if none is visible, synthesize
+"<author-id>:<date>:<first40chars>". Also capture author name + their /in/ id (from
+the actor link), one-line headline, date, type, verbatim text (read what's shown; you
+may toggle only the post's own "…more" text expander, nothing else), reaction/comment
+counts, and (if a reshare) the original author. Skip already-seen ids.
 
 == JUDGE ==
 Apply the rubric -> SIG | INSIG | SKIP (+ <=12-word reason), using entity-context.
