@@ -140,9 +140,12 @@ A) Write ALL new posts (every label) to "$RAWFILE" as JSONL, keys: id, platform
    ("linkedin"), profile, author, date, type, text, links[], engagement{}, label,
    reason, scraped_at ("$STAMP").
 B) DISCOVERIES (always, regardless of engagement): for each SIG post that reshares
-   a person NOT among the scanned profiles, append to "$DISCFILE" a JSONL record:
+   a person NOT among the scanned profiles, FIRST judge whether they are a GENUINE
+   AI person/operator (founder/researcher/builder/exec in AI) — from their name,
+   headline, and the post context. ONLY if YES, append to "$DISCFILE" a JSONL record:
    {"platform":"linkedin","id":"<their /in/ id>","name":"<display name>","kind":"person"|"organization","role_org":"<short affiliation if visible>"}
-   Mark company pages as kind "organization".
+   Mark company pages as kind "organization". Do NOT append non-AI people (politicians,
+   journalists, generic execs, non-AI brands) — note in the digest if relevant, never add.
 C) Write digest to "$DIGEST": "# LinkedIn digest — $DATE" + one-line counts; then
    one "## <Author>" section PER PERSON with >=1 new SIG post — a synthesized 2-4
    sentence summary (rolled up, NOT per-post) + "_sources: ..._". Omit people with
